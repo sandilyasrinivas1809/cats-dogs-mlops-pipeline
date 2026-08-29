@@ -221,9 +221,11 @@ __marimo__/
 dog-and-cat-classification-dataset/
 *.pdf
 plan.md
+plan_v1.md
 
 # raw dataset (downloaded via kagglehub, not versioned)
 data/raw/
 
 # local MLflow tracking store
 mlruns/
+mlflow.db
