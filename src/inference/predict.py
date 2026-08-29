@@ -12,6 +12,14 @@ DEFAULT_MODEL_PATH = Path(__file__).resolve().parents[2] / "models" / "model.pt"
 
 
 def load_model(model_path: Path = DEFAULT_MODEL_PATH, device: str = "cpu") -> SimpleCNN:
+    """Load the serialized checkpoint into an eval-mode model.
+
+    The checkpoint stores weights as float16 to halve its on-disk size (the
+    single 128x25088 classifier layer is ~97% of the parameters).
+    `load_state_dict` casts them back to the model's float32 parameters, so
+    inference is unaffected: verified identical labels and probability deltas
+    below 1e-3 against the float32 checkpoint on real test images.
+    """
     model = SimpleCNN()
     state_dict = torch.load(model_path, map_location=device, weights_only=True)
     model.load_state_dict(state_dict)

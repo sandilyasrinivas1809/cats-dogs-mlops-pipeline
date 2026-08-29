@@ -230,5 +230,7 @@ data/raw/
 mlruns/
 mlflow.db
 
-# build artifact from scripts/package_submission.py
+# local-only build tooling and its artifacts (not published)
+scripts/
 submission.zip
+*_Assignment_2.zip
