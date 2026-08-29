@@ -38,8 +38,10 @@ jobs:
 
       - name: Tag and push image
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
         run: |
-          docker tag cats-dogs-classifier:${{ github.sha }} ${{ secrets.DOCKERHUB_USERNAME }}/cats-dogs-classifier:latest
-          docker tag cats-dogs-classifier:${{ github.sha }} ${{ secrets.DOCKERHUB_USERNAME }}/cats-dogs-classifier:${{ github.sha }}
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/cats-dogs-classifier:latest
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/cats-dogs-classifier:${{ github.sha }}
+          docker tag cats-dogs-classifier:${{ github.sha }} "$DOCKERHUB_USERNAME/cats-dogs-classifier:latest"
+          docker tag cats-dogs-classifier:${{ github.sha }} "$DOCKERHUB_USERNAME/cats-dogs-classifier:${{ github.sha }}"
+          docker push "$DOCKERHUB_USERNAME/cats-dogs-classifier:latest"
+          docker push "$DOCKERHUB_USERNAME/cats-dogs-classifier:${{ github.sha }}"
