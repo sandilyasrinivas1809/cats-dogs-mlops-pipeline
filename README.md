@@ -26,6 +26,8 @@ deployment/                  # docker-compose.yml, smoke_test.sh, sample.jpg
 .github/workflows/           # ci.yml, cd.yml
 ```
 
+Full write-up: [`DOCUMENTATION.docx`](DOCUMENTATION.docx).
+
 ## Data
 
 Raw dataset (`dog-and-cat-classification-dataset/versions/1/PetImages/{Cat,Dog}`, ~864MB / 25k images) is
