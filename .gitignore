@@ -229,3 +229,6 @@ data/raw/
 # local MLflow tracking store
 mlruns/
 mlflow.db
+
+# build artifact from scripts/package_submission.py
+submission.zip
