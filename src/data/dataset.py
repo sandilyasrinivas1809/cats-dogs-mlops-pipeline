@@ -6,7 +6,6 @@ relative filepath against the raw data directory, and applies augmentation
 on-the-fly.
 """
 
-import numpy as np
 import pandas as pd
 import torch
 from PIL import Image
@@ -18,6 +17,7 @@ from src.data.preprocess import (
     IMG_SIZE,
     augment_image,
     load_and_preprocess_image,
+    preprocess_pil_image,
 )
 
 
@@ -37,9 +37,7 @@ class CatsDogsDataset(Dataset):
 
         if row["augment"]:
             with Image.open(path) as img:
-                img = augment_image(img.convert("RGB"))
-                img = img.resize((self.img_size, self.img_size), Image.BILINEAR)
-                array = np.asarray(img, dtype=np.float32) / 255.0
+                array = preprocess_pil_image(augment_image(img.convert("RGB")), self.img_size)
         else:
             array = load_and_preprocess_image(path, self.img_size)
 

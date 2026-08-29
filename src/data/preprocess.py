@@ -112,12 +112,16 @@ def stratified_split(
     return {"train": train, "val": val, "test": test}
 
 
+def preprocess_pil_image(img: Image.Image, img_size: int = IMG_SIZE) -> np.ndarray:
+    """Convert to RGB, resize to (img_size, img_size), normalize to [0, 1]."""
+    img = img.convert("RGB").resize((img_size, img_size), Image.BILINEAR)
+    return np.asarray(img, dtype=np.float32) / 255.0
+
+
 def load_and_preprocess_image(path: str | Path, img_size: int = IMG_SIZE) -> np.ndarray:
-    """Load an image, convert to RGB, resize to (img_size, img_size), normalize to [0, 1]."""
+    """Load an image from disk and preprocess it (see `preprocess_pil_image`)."""
     with Image.open(path) as img:
-        img = img.convert("RGB").resize((img_size, img_size), Image.BILINEAR)
-        array = np.asarray(img, dtype=np.float32) / 255.0
-    return array
+        return preprocess_pil_image(img, img_size)
 
 
 def augment_image(img: Image.Image, seed: int | None = None) -> Image.Image:
