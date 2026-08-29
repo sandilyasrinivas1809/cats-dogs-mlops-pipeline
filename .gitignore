@@ -216,3 +216,14 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+#local files
+dog-and-cat-classification-dataset/
+*.pdf
+plan.md
+
+# raw dataset (downloaded via kagglehub, not versioned)
+data/raw/
+
+# local MLflow tracking store
+mlruns/
