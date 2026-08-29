@@ -1,0 +1,12 @@
+.git/
+.venv/
+dog-and-cat-classification-dataset/
+data/raw/
+mlruns/
+mlflow.db
+__pycache__/
+*.pyc
+.pytest_cache/
+*.pdf
+plan.md
+plan_v1.md
