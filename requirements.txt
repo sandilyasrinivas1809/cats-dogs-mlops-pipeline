@@ -1,0 +1,15 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+torch==2.4.1+cpu
+numpy==2.4.6
+pandas==2.3.3
+pillow==12.3.0
+scikit-learn==1.7.2
+matplotlib==3.10.7
+seaborn==0.13.2
+mlflow==3.14.0
+fastapi==0.141.1
+uvicorn==0.52.4
+python-multipart==0.0.32
+pytest==9.0.1
+httpx==0.28.1
